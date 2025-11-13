@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card p-4">
+  <h3 class="mb-4">📈 Dashboard</h3>
+  <div class="row text-center">
+    <div class="col-md-3">
+      <div class="p-3 bg-light rounded shadow-sm">
+        <h5>Total Tasks</h5>
+        <h2>{{ total }}</h2>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 bg-success text-white rounded shadow-sm">
+        <h5>Completed</h5>
+        <h2>{{ completed }}</h2>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 bg-warning rounded shadow-sm">
+        <h5>Pending</h5>
+        <h2>{{ pending }}</h2>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="p-3 bg-info text-white rounded shadow-sm">
+        <h5>Progress</h5>
+        <h2>{{ percent }}%</h2>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-4">
+
+  <h5>Completion Progress</h5>
+  <div class="progress" style="height: 20px;">
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" style="width: {{ percent }}%;">
+      {{ percent }}%
+    </div>
+  </div>
+
+  <p class="mt-3 text-muted">
+    {% if percent == 100 %}
+      🎉 Great job! You’ve completed all your tasks.
+    {% elif percent >= 70 %}
+      👍 You’re almost there — keep pushing!
+    {% elif percent >= 30 %}
+      💪 Good progress — stay consistent!
+    {% else %}
+      🚀 Let’s get started — small steps count!
+    {% endif %}
+  </p>
+</div>
+{% endblock %}
