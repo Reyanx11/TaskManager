@@ -1,49 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container py-5">
+<div class="container mt-5">
     <div class="row justify-content-center align-items-center">
-        
-        <!-- Left: App Info -->
+        <!-- Left side: Info section -->
         <div class="col-md-6 mb-4 mb-md-0">
-            <h2 class="text-primary fw-bold">Welcome to Task Manager</h2>
-            <p class="mt-3">
-                Manage your daily tasks efficiently with our smart Task Manager.
-                Add, edit, and track your tasks from anywhere — securely and easily.
+            <h1 class="fw-bold mb-3 text-primary">Welcome to Task Manager</h1>
+            <p class="lead text-muted">
+                Organize your daily tasks, track progress, and stay productive — all in one place.
             </p>
-            <ul>
-                <li>✅ Secure login for your data</li>
-                <li>📋 Create, update, and delete tasks</li>
-                <li>📊 Track progress in real-time</li>
+            <ul class="list-unstyled">
+                <li>✅ Add and manage personal tasks</li>
+                <li>📊 Track completion percentage</li>
+                <li>📂 Upload and store notes</li>
+                <li>🔐 Secure login with OTP verification</li>
             </ul>
-            <p class="text-muted small mt-4">
-                Built with Flask • MySQL/PostgreSQL • Bootstrap
+            <p class="text-secondary mt-3">
+                Simplify your workflow and never miss a deadline again.
             </p>
         </div>
-<div class="centered">
-  <div class="card p-4" style="width: 400px;">
-    <h3 class="text-center mb-3">Welcome Back</h3>
-    <form method="POST">
-      {{ form.hidden_tag() }}
-      <div class="mb-3">
-        {{ form.email.label(class="form-label") }}
-        {{ form.email(class="form-control") }}
-      </div>
-      <div class="mb-3">
-        {{ form.password.label(class="form-label") }}
-        {{ form.password(class="form-control") }}
-      </div>
-      <div class="d-grid">
-        {{ form.submit(class="btn btn-success") }}
-      </div>
-      <div class="mt-2 text-center">
-            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a>
-      </div>
 
-      <p class="text-center mt-3">
-        New user? <a href="{{ url_for('register') }}">Register</a>
-      </p>
-    </form>
-  </div>
+        <!-- Right side: Login form -->
+        <div class="col-md-5">
+            <div class="card shadow-lg p-4 rounded-4">
+                <h3 class="text-center mb-4">Login to Continue</h3>
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group mb-3">
+                        {{ form.email.label(class="form-label") }}
+                        {{ form.email(class="form-control", placeholder="Enter your email") }}
+                    </div>
+                    <div class="form-group mb-3">
+                        {{ form.password.label(class="form-label") }}
+                        {{ form.password(class="form-control", placeholder="Enter your password") }}
+                    </div>
+                    <div class="form-check mb-3">
+                        {{ form.remember(class="form-check-input") }}
+                        {{ form.remember.label(class="form-check-label") }}
+                    </div>
+                    <div class="d-grid">
+                        {{ form.submit(class="btn btn-primary btn-lg rounded-3") }}
+                    </div>
+                </form>
+                <hr>
+                <div class="text-center">
+                    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+                    <p><a href="{{ url_for('forgot_password') }}">Forgot Password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
